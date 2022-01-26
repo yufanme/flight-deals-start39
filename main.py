@@ -1,7 +1,5 @@
 from data_manager import DataManager
-from pprint import pprint
 from flight_search import FlightSearch
-from flight_data import FlightData
 from notification_manager import NotificationManager
 
 # This file will need to use the DataManager,FlightSearch, FlightData,
@@ -15,8 +13,7 @@ for data in sheet_data:
         data["iataCode"] = search.get_destination_code(data["city"])
 
 sheet_manager.destination_data = sheet_data
-
-# sheet_manager.update_destination_codes()
+sheet_manager.update_destination_codes()
 
 for destination in sheet_data:
     flight = search.check_flight(destination["iataCode"])

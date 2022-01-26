@@ -1,5 +1,4 @@
 import requests
-from pprint import pprint
 import datetime
 from flight_data import FlightData
 
