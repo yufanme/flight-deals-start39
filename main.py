@@ -14,13 +14,8 @@ for data in sheet_data:
         data["iataCode"] = search.get_destination_code(data["city"])
 
 sheet_manager.destination_data = sheet_data
+
 # sheet_manager.update_destination_codes()
 
-flightdata=FlightData()
-
-# for data in sheet_data:
-#     search_data = search.get_price(data["iataCode"])
-#     print(search_data["data"][0]["price"])
-
-data = search.get_price(sheet_data[0]["iataCode"])
-print(data["data"][0]["price"])
+for destination in sheet_data:
+    flight = search.check_flight(destination["iataCode"])
