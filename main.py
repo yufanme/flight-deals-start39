@@ -23,4 +23,4 @@ flightdata=FlightData()
 #     print(search_data["data"][0]["price"])
 
 data = search.get_price(sheet_data[0]["iataCode"])
-print(data)
+print(data["data"][0]["price"])

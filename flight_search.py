@@ -42,11 +42,14 @@ class FlightSearch:
             "date_from": from_time,
             "date_to": to_time,
             "flight_type": fly_type,
-            "curr": currency
+            "curr": currency,
+            "max_stopovers": 0,
+            "one_for_city": 1
+
         }
         response = requests.get(url=search_endpoint, headers=headers, params=search_params)
         data = response.json()
-        pprint(data)
+        # pprint(data)
         return data
 
 #
