@@ -8,12 +8,13 @@ from notification_manager import NotificationManager
 sheet_manager = DataManager()
 search = FlightSearch()
 sheet_data = sheet_manager.get_destination_data()
-for data in sheet_data:
-    if not data["iataCode"]:
-        data["iataCode"] = search.get_destination_code(data["city"])
 
-sheet_manager.destination_data = sheet_data
-sheet_manager.update_destination_codes()
+# check if google sheet has IATA code.
+if sheet_data[0]["iataCode"] == "":
+    for data in sheet_data:
+        data["iataCode"] = search.get_destination_code(data["city"])
+    sheet_manager.destination_data = sheet_data
+    sheet_manager.update_destination_codes()
 
 for destination in sheet_data:
     flight = search.check_flight(destination["iataCode"])
